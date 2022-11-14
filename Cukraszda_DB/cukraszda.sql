@@ -266,7 +266,7 @@ CREATE TABLE `felhasznalo` (
 
 INSERT INTO `felhasznalo` (`id`, `felhasznalonev`, `jelszo`) VALUES
 (1, 'admin', '$2a$10$VMNCX7vyZjvW/6.CNsDnQuM.rAZ2JstRFoRVyEDI6Ekg1kOAhsw3y'),
-(2, 'pyx', '$2a$10$PE83QqmkcWMY4qejmgeB7.EQHPvMuNaYnBRAv34Op9DvEBABMCleu')
+(2, 'pyx', '$2a$10$PE83QqmkcWMY4qejmgeB7.EQHPvMuNaYnBRAv34Op9DvEBABMCleu');
 
 -- --------------------------------------------------------
 
@@ -543,11 +543,7 @@ CREATE TABLE `user_role` (
 
 INSERT INTO `user_role` (`user_id`, `role_id`) VALUES
 (1, 1),
-(2, 3),
-(3, 3),
-(4, 3),
-(5, 3),
-(6, 3);
+(2, 1);
 
 -- --------------------------------------------------------
 

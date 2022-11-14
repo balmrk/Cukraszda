@@ -20,7 +20,7 @@
             <a class=reg th:href="@{/regisztral}">Regisztráció</a>
         </span>
 
-         <span sec:authorize="hasRole('ROLE_ADMIN')">
+         <span sec:authorize="hasRole('ADMIN')">
             <a class=navbar th:href="@{/admin/uzenetek}">Admin</a>
         </span>
 

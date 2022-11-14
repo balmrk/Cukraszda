@@ -6,6 +6,14 @@
 </head>
 <body>
 <div th:insert="menu"></div>
+<h1>Küldjön üzenetet!</h1>
+<form action="#" th:action="@{/uzenet_feldolgoz}" th:object="${reg}" method="post">
+    <fieldset>
+        <legend>Üzenet</legend>
+        <p><input type="text" placeholder="Üzenet" required/></p>
+        <p><input type="submit" value="Küldés" /></p>
+    </fieldset>
+</form>
 
 </body>
 </html>

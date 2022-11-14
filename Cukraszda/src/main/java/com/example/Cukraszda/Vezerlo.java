@@ -83,4 +83,9 @@ public class Vezerlo
         model.addAttribute("id", user.getId());
         return "regjo";
     }
+    /*
+    @PostMapping("/uzenet_feldolgoz")
+    public String Uzenetkuldes(){
+
+    }*/
 }

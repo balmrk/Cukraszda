@@ -26,7 +26,7 @@ public class Vezerlo
     @GetMapping("/home")
     public String user(Model model)
     {
-        return "user";
+        return "index";
     }
 
     @GetMapping("/")

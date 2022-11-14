@@ -15,5 +15,7 @@
   <div sec:authorize="isAuthenticated()">
     <h3>Welcome <span sec:authentication="principal.username">User</span></h3>
   </div>
-  asd
+    <span sec:authorize="isAnonymous()">
+ <a th:href="@{/regisztral}">Regisztrál</a>
+ </span>
 </div>

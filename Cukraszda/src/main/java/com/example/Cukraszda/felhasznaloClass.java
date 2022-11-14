@@ -1,34 +1,39 @@
 package com.example.Cukraszda;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="felhasznalo")
 public class felhasznaloClass {
     @Id
-    private int id;
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private Integer id;
     @Column(name="felhasznalonev")
-    private String felhasznalonev;
+    private String username;
     @Column(name="jelszo")
     private String jelszo;
+    @ManyToMany(cascade = CascadeType.MERGE)
+    @JoinTable(
+            name="user_role",
+            joinColumns = {@JoinColumn(name="user_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")})
+    private List<Role> roles;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public String getFelhasznalonev() {
-        return felhasznalonev;
+    public String getUsername() {
+        return username;
     }
 
-    public void setFelhasznalonev(String felhasznalonev) {
-        this.felhasznalonev = felhasznalonev;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getJelszo() {
@@ -39,9 +44,11 @@ public class felhasznaloClass {
         this.jelszo = jelszo;
     }
 
-    public felhasznaloClass(int id, String felhasznalonev, String jelszo) {
-        this.id = id;
-        this.felhasznalonev = felhasznalonev;
-        this.jelszo = jelszo;
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
 }

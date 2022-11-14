@@ -2,9 +2,22 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/index.css}" />
     <title>6000 Sweets Cukrászda</title>
 </head>
 <body>
     <div th:insert="menu"></div>
+    <div id="torcim">
+        <h2>Történetünk</h2>
+    </div>
+    <div class="tor">
+        <p>A fél évszázados múltra visszatekintő <strong>Sweets Cukrászda</strong> 1973. április 23-án nyitotta meg kapuit. Akkoriban az üzlet és a termelő helyiségek mérete kisebb volt, mint a jelenlegi eladótér.</p>
+        <p>Az 1985-ös átépítéssel egyaránt nőtt a vendégtér és a termelő is. Ennek köszönhetően került bevezetésre az olasz krémfagylalt, a fagylaltos vitrin is. A vendégek már felszolgálással is kérhették kedvenc süteményüket és fagylaltkelyhüket az asztalokhoz.</p>
+        <p>Az évek során beigazolódni látszott az a tény, hogy a süteményes vitrinpult mérete és az ülőfogyasztás kapacitása kevésnek bizonyult. A tulajdonos 1998-ban úgy döntött, hogy újabb felújítási munkához lát.</p>
+        <p>A külső munkálatok már szeptemberben elkezdődtek, és december 31-én be is zárt az üzlet a belső átalakítások miatt. Ennek eredményeként 1999 tavaszán nyitotta meg kapuit a mind belső hangulatában, mind kínálatában megújult Sweets Cukrászda.</p>
+    </div>
+    <footer>
+        Copyright &copy; <script>document.write(new Date().getFullYear())</script> Sweets Cukrászda
+    </footer>
 </body>
 </html>

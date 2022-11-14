@@ -1,29 +1,32 @@
 <meta charset="UTF-8">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <link rel="stylesheet" th:href="@{/css/menu.css}" />
 </head>
-<div xmlns:th="http://www.thymeleaf.org"
-     xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<div>
      <div class="cimsor">
-        <img id=logo src="../static/images/logo.png" alt="Logo">
+        <img id=logo th:src="@{/images/logo.png}" alt="Logo">
         <h1 id =cim>Sweets Cukrászda</h1>
     </div>
      <div class=navline>
-    <span sec:authorize="isAuthenticated()">
- <a class= navbar th:href="@{/home}">Főoldal</a>
- <a class=navbar th:href="@{/logout}">Kijelentkezés</a>
- </span>
-        <span sec:authorize="hasRole('ROLE_ADMIN')">
- <a class=navbar th:href="@{/admin/home}">Admin</a>
- </span>
+        <span>
+            <a class= navbar th:href="@{/}">Főoldal</a>
+            <a class= navbar th:href="@{/sutik}">Sütik</a>
+            <a class= navbar th:href="@{/kapcsolat}">Kapcsolat</a>
+        </span>
+
         <span sec:authorize="isAnonymous()">
-        <a class=reg th:href="@{/regisztral}">Regisztráció</a>
-    </span>
-        <span sec:authorize="isAnonymous()">
- <a class=reg th:href="@{/login}">Belépés</a>
- </span>
-    </div>
-    <div sec:authorize="isAuthenticated()">
-        <h3>Welcome <span sec:authentication="principal.username">User</span></h3>
+            <a class=reg th:href="@{/login}">Belépés</a>
+            <a class=reg th:href="@{/regisztral}">Regisztráció</a>
+        </span>
+
+         <span sec:authorize="hasRole('ROLE_ADMIN')">
+            <a class=navbar th:href="@{/admin/uzenetek}">Admin</a>
+        </span>
+
+         <span sec:authorize="isAuthenticated()">
+            <h3>Szia, <span sec:authentication="principal.username">User</span>!</h3>
+            <a class=navbar th:href="@{/logout}">Kijelentkezés</a>
+         </span>
     </div>
 </div>

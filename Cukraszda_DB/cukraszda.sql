@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2022. Nov 14. 00:13
+-- Létrehozás ideje: 2022. Nov 14. 23:49
 -- Kiszolgáló verziója: 10.4.21-MariaDB
 -- PHP verzió: 8.0.12
 
@@ -255,10 +255,9 @@ INSERT INTO `ar` (`id`, `sutiid`, `ertek`, `egyseg`) VALUES
 --
 
 CREATE TABLE `felhasznalo` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `felhasznalonev` varchar(25) NOT NULL,
-  `jelszo` varchar(100) NOT NULL,
-  PRIMARY KEY (id)
+  `jelszo` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -266,7 +265,8 @@ CREATE TABLE `felhasznalo` (
 --
 
 INSERT INTO `felhasznalo` (`id`, `felhasznalonev`, `jelszo`) VALUES
-(1, 'admin', 'admin');
+(1, 'admin', '$2a$10$VMNCX7vyZjvW/6.CNsDnQuM.rAZ2JstRFoRVyEDI6Ekg1kOAhsw3y'),
+(2, 'pyx', '$2a$10$PE83QqmkcWMY4qejmgeB7.EQHPvMuNaYnBRAv34Op9DvEBABMCleu')
 
 -- --------------------------------------------------------
 
@@ -542,7 +542,14 @@ CREATE TABLE `user_role` (
 --
 
 INSERT INTO `user_role` (`user_id`, `role_id`) VALUES
-(1, 1);
+(1, 1),
+(2, 3),
+(3, 3),
+(4, 3),
+(5, 3),
+(6, 3);
+
+-- --------------------------------------------------------
 
 --
 -- Tábla szerkezet ehhez a táblához `uzenetek`
@@ -564,6 +571,13 @@ ALTER TABLE `ar`
   ADD PRIMARY KEY (`id`),
   ADD KEY `sutiid` (`sutiid`);
 
+--
+-- A tábla indexei `felhasznalo`
+--
+ALTER TABLE `felhasznalo`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- A tábla indexei `roles`
 --
 ALTER TABLE `roles`
@@ -596,6 +610,22 @@ ALTER TABLE `uzenetek`
   ADD PRIMARY KEY (`id`);
 
 --
+-- A kiírt táblák AUTO_INCREMENT értéke
+--
+
+--
+-- AUTO_INCREMENT a táblához `felhasznalo`
+--
+ALTER TABLE `felhasznalo`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT a táblához `uzenetek`
+--
+ALTER TABLE `uzenetek`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+
+--
 -- Megkötések a kiírt táblákhoz
 --
 
@@ -617,16 +647,6 @@ ALTER TABLE `tartalom`
 ALTER TABLE `user_role`
   ADD CONSTRAINT `user_role_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `felhasznalo` (`id`),
   ADD CONSTRAINT `user_role_ibfk_2` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`);
-COMMIT;
-
---
--- A kiírt táblák AUTO_INCREMENT értéke
---
---
--- AUTO_INCREMENT a táblához `uzenetek`
---
-ALTER TABLE `uzenetek`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

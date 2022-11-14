@@ -22,13 +22,13 @@ public class Vezerlo
     private sutiRepo SRepo;
     @Autowired
     private tartalomRepo TRepo;
-
+/*
     @GetMapping("/home")
     public String user(Model model)
     {
         return "index";
     }
-
+*/
     @GetMapping("/")
     public String Fooldal()
     {

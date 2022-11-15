@@ -2,10 +2,31 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/sutik.css}" />
     <title>Sütik</title>
 </head>
 <body>
+<header>
 <div th:insert="menu"></div>
-
+</header>
+    <table class="lista">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Név</th>
+            <th>Típus</th>
+            <th>Díjazott</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="suti : ${termekek}">
+            <td th:text="${suti.id}"></td>
+            <td th:text="${suti.nev}"></td>
+            <td th:text="${suti.tipus}"></td>
+            <td th:text="${suti.dijazott}"></td>
+        </tr>
+        </tbody>
+    </table>
+<div th:insert="footer"></div>
 </body>
 </html>

@@ -49,10 +49,4 @@ public class sutiClass {
         this.dijazott = dijazott;
     }
 
-    public sutiClass(int id, String nev, String tipus, boolean dijazott) {
-        this.id = id;
-        this.nev = nev;
-        this.tipus = tipus;
-        this.dijazott = dijazott;
-    }
 }

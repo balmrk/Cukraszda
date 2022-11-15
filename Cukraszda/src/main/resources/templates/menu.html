@@ -14,6 +14,15 @@
             <a class= navbar th:href="@{/sutik}">Sütik</a>
             <a class= navbar th:href="@{/kapcsolat}">Kapcsolat</a>
         </span>
+
+         <span sec:authorize="hasRole('ADMIN')">
+            <a class=navbar th:href="@{/admin/uzenetek}">Admin</a>
+        </span>
+
+         <span sec:authorize="isAnonymous()">
+             <h3>Vendég</h3>
+         </span>
+
          <span sec:authorize="isAuthenticated()">
              <a class=reg th:href="@{/logout}">Kijelentkezés</a>
              <h3>Szia, <span sec:authentication="principal.username">User</span>!</h3>
@@ -24,8 +33,5 @@
             <a class=reg th:href="@{/regisztral}">Regisztráció</a>
         </span>
 
-         <span sec:authorize="hasRole('ADMIN')">
-            <a class=navbar th:href="@{/admin/uzenetek}">Admin</a>
-        </span>
     </div>
 </div>

@@ -22,13 +22,7 @@ public class Vezerlo
     private sutiRepo SRepo;
     @Autowired
     private tartalomRepo TRepo;
-/*
-    @GetMapping("/home")
-    public String user(Model model)
-    {
-        return "index";
-    }
-*/
+
     @GetMapping("/")
     public String Fooldal()
     {
@@ -36,8 +30,9 @@ public class Vezerlo
     }
 
     @GetMapping("/sutik")
-    public String Sutikoldal()
+    public String Sutikoldal(Model model)
     {
+        model.addAttribute("termekek",SRepo.findAll());
         return "sutik";
     }
 
@@ -57,6 +52,12 @@ public class Vezerlo
     {
         model.addAttribute("reg", new felhasznaloClass());
         return "regisztral";
+    }
+
+    @GetMapping("/login")
+    public String Login()
+    {
+        return "login";
     }
 
     @Autowired
@@ -83,9 +84,9 @@ public class Vezerlo
         model.addAttribute("id", user.getId());
         return "regjo";
     }
-    /*
     @PostMapping("/uzenet_feldolgoz")
-    public String Uzenetkuldes(){
+    public String Uzenetkuldes(Model model){
 
-    }*/
+        return "asd";
+    }
 }

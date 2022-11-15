@@ -30,16 +30,6 @@ article {
     width: auto;
     text-align: left;
 }
-#torcim {
-    text-align: center;
-    padding-top: 20px;
-}
-.tor{
-    text-align: justify;
-    margin: auto;
-    width: 80%;
-    display: block;
-}
 header {
     min-height: 50px;
 }

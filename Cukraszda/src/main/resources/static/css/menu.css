@@ -11,9 +11,9 @@ div {
 }
 .navbar{
     width: auto;
-    text-align: center;
-    padding: 5;
+    text-align: center;;
     float: left;
+    padding: 9px;
     color: black;
     border-right: 2px solid black;
     border-bottom: 1px solid black;
@@ -24,7 +24,7 @@ div {
 .reg{
     width: auto;
     text-align: center;
-    padding: 5;
+    padding: 9px;
     float: right;
     color: black;
     border-left: 2px solid black;
@@ -35,16 +35,18 @@ div {
 }
 .navline {
     width: 100%;
+    height: 40px;
     background-color: #ffe3cb ;
 }
 
 h3 {
-    margin: 5;
-    padding: 0;
     text-align: center;
+    width: 260px;
+    margin: auto;
+    padding: 6px;
 }
 .cimsor {
-    display: inline-flexbox;
+    display: block;
 }
 #logo {
     margin-right: 30px;

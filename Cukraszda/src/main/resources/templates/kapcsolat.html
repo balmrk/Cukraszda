@@ -2,18 +2,21 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/kapcsolat.css}" />
     <title>Kapcsolat</title>
 </head>
 <body>
-<div th:insert="menu"></div>
-<h1>Küldjön üzenetet!</h1>
-<form action="#" th:action="@{/uzenet_feldolgoz}" th:object="${reg}" method="post">
-    <fieldset>
-        <legend>Üzenet</legend>
-        <p><input type="text" placeholder="Üzenet" required/></p>
-        <p><input type="submit" value="Küldés" /></p>
-    </fieldset>
+<header>
+    <div th:insert="menu"></div>
+</header>
+<div id="lep">
+    Lépjen velünk kapcsolatba!
+</div>
+<form>      
+    <input name="name" type="text" class="kapcs" placeholder="Név" />   
+    <input name="email" type="text" class="kapcs" placeholder="E-mail" />
+    <textarea name="text" class="kapcs" placeholder="Üzenet"></textarea>
+    <input type="submit" value="Küldés"/>
 </form>
-
 </body>
 </html>

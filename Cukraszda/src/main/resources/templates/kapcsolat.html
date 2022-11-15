@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" th:href="@{/css/kapcsolat.css}" />
@@ -9,12 +9,13 @@
 <header>
     <div th:insert="menu"></div>
 </header>
-<div id="lep">
-    Lépjen velünk kapcsolatba!
-</div>
-<form>      
-    <input name="name" type="text" class="kapcs" placeholder="Név" />   
-    <input name="email" type="text" class="kapcs" placeholder="E-mail" />
+<span class="lep" sec:authorize="isAnonymous()">
+<a>Üzenet küldéséhez, jelentkezzen be!</a>
+</span>
+<span class="lep" sec:authorize="isAuthenticated()">
+<a><span sec:authentication="principal.username">User</span>, itt küldhetsz nekünk üzenetet!</a>
+</span>
+<form>
     <textarea name="text" class="kapcs" placeholder="Üzenet"></textarea>
     <input type="submit" value="Küldés"/>
 </form>

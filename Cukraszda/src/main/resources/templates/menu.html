@@ -18,20 +18,17 @@
          <span sec:authorize="hasRole('ADMIN')">
             <a class=navbar th:href="@{/admin/uzenetek}">Admin</a>
         </span>
-
+         <span sec:authorize="isAnonymous()">
+             <a class=reg th:href="@{/login}">Belépés</a>
+             <a class=reg th:href="@{/regisztral}">Regisztráció</a>
+         </span>
+         <span sec:authorize="isAuthenticated()">
+             <a class=reg th:href="@{/logout}">Kijelentkezés</a>
+             <h3><span sec:authentication="principal.username">User</span></h3>
+         </span>
          <span sec:authorize="isAnonymous()">
              <h3>Vendég</h3>
          </span>
-
-         <span sec:authorize="isAuthenticated()">
-             <a class=reg th:href="@{/logout}">Kijelentkezés</a>
-             <h3>Szia, <span sec:authentication="principal.username">User</span>!</h3>
-         </span>
-
-        <span sec:authorize="isAnonymous()">
-            <a class=reg th:href="@{/login}">Belépés</a>
-            <a class=reg th:href="@{/regisztral}">Regisztráció</a>
-        </span>
 
     </div>
 </div>

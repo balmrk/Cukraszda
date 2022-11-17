@@ -37,10 +37,10 @@ header {
     margin-top: 80px;
     text-align: center;
     font-size: 36px;
-  }
-  form { max-width:420px; margin:50px auto; }
-  
-  .kapcs {
+}
+form { max-width:420px; margin:50px auto; }
+
+.kapcs {
     border-radius: 5px;
     line-height: 22px;
     background-color: transparent;
@@ -51,11 +51,11 @@ header {
     width:100%;
     box-sizing: border-box;
     outline:0;
-  }
-  
-  .kapcs:focus { border:2px solid #CC4949; }
-  
-  [type="submit"] {
+}
+
+.kapcs:focus { border:2px solid #CC4949; }
+
+[type="submit"] {
     font-family: 'Montserrat', Arial, Helvetica, sans-serif;
     width: 100%;
     background:#CC6666;
@@ -69,9 +69,9 @@ header {
     transition: all 0.3s;
     margin-top:-4px;
     font-weight:700;
-  }
-  [type="submit"]:hover { background:#CC4949; }
-  
+}
+[type="submit"]:hover { background:#CC4949; }
+
 footer {
     min-height: 50px;
     background: #ffe3cb;

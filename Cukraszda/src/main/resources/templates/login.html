@@ -2,21 +2,25 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/login.css}" />
     <title>Belépés</title>
 </head>
 <body>
+<div th:insert="menu"></div>
+<h3 id="lep">Belépés</h3>
 <form name="f" th:action="@{/login}" method="post">
+        </div>
     <div th:if="${param.error}" class="alert alert-error">
-            Hibás felhasználónév vagy/és jelszó.
-        </div>
-        <div th:if="${param.logout}" class="alert alert-success">
-            Sikeres belépés.
-        </div>
-        <input type="text" id="username" name="username" placeholder="Felhasználónév"/>
-        <input type="password" id="password" name="password" placeholder="Jelszó"/>
+        Hibás felhasználónév vagy/és jelszó.
+    </div>
+    <div th:if="${param.logout}" class="alert alert-success">
+        Sikeres belépés.</div>
+        <input type="text" class="kapcs" id="username" name="username" placeholder="Felhasználónév"/>
+        <input type="password" class="kapcs" id="password" name="password" placeholder="Jelszó"/>
         <div class="form-actions">
             <button type="submit" class="btn">Belépés</button>
     </div>
 </form>
+<div th:insert="footer"></div>
 </body>
 </html>

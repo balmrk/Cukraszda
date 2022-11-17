@@ -10,15 +10,16 @@
     <div th:insert="menu"></div>
 </header>
 <span class="lep" sec:authorize="isAnonymous()">
-<a>Üzenet küldéséhez, jelentkezzen be!</a>
+<a>Üzenjen nekünk!</a>
 </span>
 <span class="lep" sec:authorize="isAuthenticated()">
 <a><span sec:authentication="principal.username">User</span>, itt küldhetsz nekünk üzenetet!</a>
 </span>
-<form>
-    <textarea name="text" class="kapcs" placeholder="Üzenet"></textarea>
+<form action="#" th:action="@{/uzenet_feldolgoz}" th:object="${mess}" method="post">
+    <textarea name="text" th:field="*{content}" placeholder="Üzenet" class="kapcs"></textarea>
     <input type="submit" value="Küldés"/>
 </form>
+
 <div th:insert="footer"></div>
 </body>
 </html>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2022. Nov 17. 12:37
+-- Létrehozás ideje: 2022. Nov 15. 23:19
 -- Kiszolgáló verziója: 10.4.21-MariaDB
 -- PHP verzió: 8.0.12
 
@@ -557,11 +557,8 @@ INSERT INTO `user_role` (`user_id`, `role_id`) VALUES
 
 CREATE TABLE `uzenetek` (
   `id` int(10) NOT NULL,
-  `sender` varchar(40) COLLATE utf8mb4_hungarian_ci NOT NULL,
-  `content` varchar(255) COLLATE utf8mb4_hungarian_ci NOT NULL,
-  `kuldes_ideje` varchar(19) COLLATE utf8mb4_hungarian_ci NOT NULL
+  `content` varchar(255) COLLATE utf8mb4_hungarian_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
-
 
 --
 -- Indexek a kiírt táblákhoz
@@ -626,7 +623,7 @@ ALTER TABLE `felhasznalo`
 -- AUTO_INCREMENT a táblához `uzenetek`
 --
 ALTER TABLE `uzenetek`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- Megkötések a kiírt táblákhoz

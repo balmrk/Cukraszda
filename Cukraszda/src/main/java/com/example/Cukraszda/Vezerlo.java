@@ -44,7 +44,8 @@ public class Vezerlo
     }
 
     @GetMapping("/admin/uzenetek")
-    public String UzenetekOldal(){
+    public String UzenetekOldal(Model model){
+        model.addAttribute("uzenetek",URepo.findAll());
         return "uzenetek";
     }
 

@@ -1,5 +1,6 @@
 <meta charset="UTF-8">
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <link rel="stylesheet" th:href="@{/css/menu.css}" />
 </head>
@@ -15,8 +16,8 @@
             <a class= navbar th:href="@{/kapcsolat}">Kapcsolat</a>
         </span>
 
-         <span sec:authorize="hasRole('ADMIN')">
-            <a class=navbar th:href="@{/admin/uzenetek}">Admin</a>
+         <span sec:authorize="hasAuthority('ADMIN')">
+            <a class=navbar th:href="@{/admin/uzenetek}">Üzenetek</a>
         </span>
          <span sec:authorize="isAnonymous()">
              <a class=reg th:href="@{/login}">Belépés</a>

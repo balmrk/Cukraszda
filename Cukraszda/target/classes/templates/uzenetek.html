@@ -2,10 +2,30 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/uzenetek.css}" />
     <title>Bejövő üzenetek</title>
 </head>
 <body>
 <div th:insert="menu"></div>
-
+<h3 id="sutcim">Üzenetek</h3>
+<table class="lista">
+    <thead>
+    <tr class="uzcim">
+        <th id="id">ID</th>
+        <th id="nevt">Feladó</th>
+        <th id="tip">Üzenet</th>
+        <th>Küldés ideje</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="uzsor" th:each="uzenetek : ${uzenetek}">
+        <td th:text="${uzenetek.id}"></td>
+        <td th:text="${uzenetek.sender}"></td>
+        <td th:text="${uzenetek.content}"></td>
+        <td th:text="${uzenetek.kuldes_ideje}"></td>
+    </tr>
+    </tbody>
+</table>
+<div th:insert="footer"></div>
 </body>
 </html>

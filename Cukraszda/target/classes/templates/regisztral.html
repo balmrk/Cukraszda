@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+  <title>Bejelentkezés, regisztráció</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" th:href="@{/css/regisztral.css}" />
+</head>
+<body>
+<div th:insert="menu"></div>
+<h3 id="lep">Regisztráció</h3>
+<form action="#" th:action="@{/regisztral_feldolgoz}" th:object="${reg}" method="post">
+    <input type="text" class="kapcs" th:field="*{username}" placeholder="Felhasználónév" required/>
+    <input type="password" class="kapcs" th:field="*{jelszo}" placeholder="Jelszó" required/>
+    <input type="submit" value="Regisztráció" /></p>
+</form>
+<div th:insert="footer"></div>
+</body>
+</html>

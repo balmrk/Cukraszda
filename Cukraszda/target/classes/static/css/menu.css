@@ -1,0 +1,64 @@
+body {margin: 0;
+    background-color: #ffffcc;
+}
+
+div {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    width: 100%;
+    
+}
+.navbar{
+    width: auto;
+    text-align: center;;
+    float: left;
+    padding: 9px;
+    color: black;
+    border-right: 2px solid black;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    background-color: #ffe3cb;
+    
+}
+.reg{
+    width: auto;
+    text-align: center;
+    padding: 9px;
+    float: right;
+    color: black;
+    border-left: 2px solid black;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    background-color: #ffe3cb;
+    
+}
+.navline {
+    width: 100%;
+    height: 40px;
+    background-color: #ffe3cb ;
+}
+
+h3 {
+    text-align: center;
+    width: 260px;
+    margin: auto;
+    padding: 6px;
+}
+.cimsor {
+    display: block;
+}
+#logo {
+    margin-right: 30px;
+    float: left;
+    width: 180px;
+    height: 160px;
+}
+#cim {
+    margin-top: 10px;
+    font-size: 64px;
+    font-family: 'Brush Script MT', cursive;
+    padding-top: 40px;
+    width: auto;
+    text-align: left;
+}

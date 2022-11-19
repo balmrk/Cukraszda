@@ -7,10 +7,12 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.validation.Valid;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -88,28 +90,27 @@ public class Vezerlo
     public String Kapcsolatoldal(Model model)
     {
         model.addAttribute("mess", new uzenetClass());
-
         return "kapcsolat";
     }
 
     @PostMapping("/uzenet_feldolgoz")
-    public String Uzenetkuldes(@ModelAttribute uzenetClass msg, Model model)
+    public String Uzenetkuldes(@ModelAttribute uzenetClass mess, Model model)
     {
         //üzenet feladója
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String neve = auth.getName();
         if (neve.equals("anonymousUser")) neve="Vendég";
-        msg.setSender(neve);
+        mess.setSender(neve);
 
         //küldés ideje
         LocalDateTime ido = LocalDateTime.now();
         DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String formattedIdo = ido.format(format);
         System.out.println(formattedIdo);
-        msg.setKuldes_ideje(formattedIdo);
+        mess.setKuldes_ideje(formattedIdo);
 
         //mentés adatbázisba
-        URepo.save(msg);
+        URepo.save(mess);
 
         return "redirect:/";
     }

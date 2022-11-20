@@ -1,9 +1,7 @@
 package com.example.Cukraszda.Models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="suti")
@@ -16,6 +14,30 @@ public class sutiClass {
     private String tipus;
     @Column(name="dijazott")
     private boolean dijazott;
+
+    @OneToOne
+    @JoinColumn(name = "id", referencedColumnName = "sutiid", insertable = false, updatable = false)
+    private arClass ar;
+
+    @OneToOne
+    @JoinColumn(name = "id", referencedColumnName = "sutiid", insertable = false, updatable = false)
+    private tartalomClass tartalom;
+
+    public tartalomClass getTartalom() {
+        return tartalom;
+    }
+
+    public void setTartalom(tartalomClass tartalom) {
+        this.tartalom = tartalom;
+    }
+
+    public arClass getAr() {
+        return ar;
+    }
+
+    public void setAr(arClass ar) {
+        this.ar = ar;
+    }
 
     public int getId() {
         return id;

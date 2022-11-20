@@ -8,24 +8,27 @@
 <body>
 <div th:insert="menu"></div>
 <h3 id="sutcim">Sütik</h3>
-    <table class="lista">
-        <thead>
-        <tr>
-            <th id="id">ID</th>
-            <th id="nevt">Név</th>
-            <th id="tip">Típus</th>
-            <th>Díjazott</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="suti : ${termekek}">
-            <td th:text="${suti.id}"></td>
-            <td th:text="${suti.nev}"></td>
-            <td th:text="${suti.tipus}"></td>
-            <td th:text="${suti.dijazott}"></td>
-        </tr>
-        </tbody>
-    </table>
+<p th:utext="${termekek}"></p>
+
+<!-- <table class="lista">
+    <thead>
+    <tr>
+        <th id="id">ID</th>
+        <th id="nevt">Név</th>
+        <th id="tip">Típus</th>
+        <th>Díjazott</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="suti : ${termekek}">
+        <td th:text="${suti.id}"></td>
+        <td th:text="${suti.nev}"></td>
+        <td th:text="${suti.tipus}"></td>
+        <td th:text="${suti.dijazott}"></td>
+    </tr>
+    </tbody>
+</table>
+-->
 <div th:insert="footer"></div>
 </body>
 </html>

@@ -1,9 +1,16 @@
 package com.example.Cukraszda.Controllers;
 
+
+import com.example.Cukraszda.Models.*;
+/*
+import com.example.Cukraszda.Models.sutiClass;
+import com.example.Cukraszda.Models.tartalomClass;
+import com.example.Cukraszda.Models.arClass;
+import com.example.Cukraszda.Models.Role;
 import com.example.Cukraszda.Models.felhasznaloClass;
 import com.example.Cukraszda.Models.uzenetClass;
+*/
 import com.example.Cukraszda.Repositories.*;
-import com.example.Cukraszda.Models.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -44,8 +51,26 @@ public class HomeController
     @GetMapping("/sutik")
     public String Sutikoldal(Model model)
     {
-        model.addAttribute("termekek",SRepo.findAll());
+        //model.addAttribute("termekek",SRepo.findAll());
+        model.addAttribute("termekek",Termekek());
         return "sutik";
+    }
+
+    //Kapcsolt adatok a táblákból
+    String Termekek(){
+        String str="";
+        for (sutiClass suti : SRepo.findAll()){
+            str+=suti.getId()+";"+suti.getNev()+";"+suti.getTipus()+";"+suti.isDijazott();
+            str+=";"+suti.getAr().getErtek()+";"+suti.getAr().getEgyseg();
+            try {
+                str += ";" + suti.getTartalom().getMentes();
+            }catch(Exception e){
+                str+=";-nincs tartalom-";
+            }
+            str+="\n\n\n";
+        }
+
+        return str;
     }
 
     @GetMapping("/admin/uzenetek")

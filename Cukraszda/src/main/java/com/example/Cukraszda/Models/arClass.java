@@ -55,4 +55,7 @@ public class arClass {
         this.ertek = ertek;
         this.egyseg = egyseg;
     }
+
+    public arClass() {
+    }
 }

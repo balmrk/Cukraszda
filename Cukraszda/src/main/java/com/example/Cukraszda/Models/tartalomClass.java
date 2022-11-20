@@ -44,4 +44,7 @@ public class tartalomClass {
         this.sutiid = sutiid;
         this.mentes = mentes;
     }
+
+    public tartalomClass() {
+    }
 }

@@ -1,4 +1,6 @@
-package com.example.Cukraszda;
+package com.example.Cukraszda.Models;
+
+import com.example.Cukraszda.Models.felhasznaloClass;
 
 import javax.persistence.*;
 import java.util.List;

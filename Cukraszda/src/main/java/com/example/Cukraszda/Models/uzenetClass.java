@@ -1,6 +1,7 @@
-package com.example.Cukraszda;
+package com.example.Cukraszda.Models;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -13,6 +14,9 @@ public class uzenetClass {
     @Column(name="sender")
     private String sender;
     @Column(name="content")
+    @NotEmpty(message = "Üres üzenetet nem lehet küldeni!")
+    @Size(min = 10, message = "Az üzenet túl rövid. (Min: 10 karakter)")
+    @Size(max = 255, message = "Az üzenet túl hosszú. (Max: 255 karakter)")
     private String content;
     @Column(name="kuldes_ideje")
     private String kuldes_ideje;

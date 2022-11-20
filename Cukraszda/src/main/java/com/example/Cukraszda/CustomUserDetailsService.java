@@ -1,5 +1,7 @@
 package com.example.Cukraszda;
 
+import com.example.Cukraszda.Models.felhasznaloClass;
+import com.example.Cukraszda.Repositories.felhasznaloRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;

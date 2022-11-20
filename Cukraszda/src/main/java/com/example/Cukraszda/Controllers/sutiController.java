@@ -1,9 +1,13 @@
-package com.example.Cukraszda;
+package com.example.Cukraszda.Controllers;
+import com.example.Cukraszda.Exceptions.sutiClassNotFoundException;
 
+import com.example.Cukraszda.Exceptions.sutiClassNotFoundException;
+import com.example.Cukraszda.Models.sutiClass;
+import com.example.Cukraszda.Repositories.sutiRepo;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-public class sutiController {
+class sutiController {
     private final sutiRepo repo;
 
     sutiController(sutiRepo repo) {
@@ -28,8 +32,17 @@ public class sutiController {
 
     @PutMapping("/sutik/{id}")
     sutiClass sutiModosit(@RequestBody sutiClass suti, @PathVariable Integer id) {
-        //.....
-        return repo.save(suti);
+        return repo.findById(id)
+                .map(Suti -> {
+                    Suti.setNev(suti.getNev());
+                    Suti.setTipus(suti.getTipus());
+                    Suti.setDijazott(suti.isDijazott());
+                    return repo.save(Suti);
+                })
+                .orElseGet(()->{
+                    suti.setId(id);
+                    return repo.save(suti);
+                });
     }
 
     @DeleteMapping("/sutik/{id}")

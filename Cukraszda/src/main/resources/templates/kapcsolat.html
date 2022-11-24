@@ -16,10 +16,9 @@
 <span class="lep" sec:authorize="isAuthenticated()">
 <div class="lep"><span sec:authentication="principal.username">User</span>, itt küldhetsz nekünk üzenetet!</div>
 </span>
-<form action="#" th:action="@{/uzenet_feldolgoz}" th:object="${mess}" method="post">
-    <!-- <input type="text" th:field="*{content}" /> -->
-    <textarea name="text" th:field="*{content}" placeholder="Üzenet" class="kapcs"></textarea>
-    <p th:if="${#fields.hasErrors('content')}" th:errors="*{content}"></p>
+<form action="#" th:action="@{/uzenet}" th:object="${attr1}" method="post">
+    <input type="text" th:field="*{content}" placeholder="Üzenet" class="kapcs" />
+    <!-- <p th:if="${#fields.hasErrors('content')}" th:errors="*{content}"></p> -->
     <input type="submit" value="Küldés"/>
 </form>
 </article>

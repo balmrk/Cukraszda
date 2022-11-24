@@ -29,8 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-public class HomeController
-{
+public class HomeController {
     @Autowired
     private arRepo ARepo;
     @Autowired
@@ -43,77 +42,101 @@ public class HomeController
     private uzenetRepo URepo;
 
     @GetMapping("/")
-    public String Fooldal()
-    {
+    public String Fooldal() {
+        return "index";
+    }
+/*
+        @GetMapping("/kapcsolat")
+        public String kapcsolatOldal(Model model) {
+            model.addAttribute("asd", new uzenetClass());
+            return "teszt";
+        }
+
+        @PostMapping("/uzenet")
+        public String urlapKuldes(@ModelAttribute uzenetClass uzenet, Model model) {
+            model.addAttribute("attr2", uzenet);
+            System.out.println("===========================================");
+            //System.out.println("Az elküldött üzenet: " + uzenet.getContent());
+            System.out.println("===========================================");
+            return "kapcsolat";
+        }
+*/
+@GetMapping("/uzenet")
+public String urlapForm(Model model) {
+    model.addAttribute("msg", new uzenetClass());
+    return "urlap";
+}
+    @PostMapping("/kuldes")
+    public String urlapSubmit(@ModelAttribute uzenetClass UzenetOsztaly, Model model) {
+        model.addAttribute("attr2", UzenetOsztaly);
+        System.out.println("===========================================");
+        System.out.println(UzenetOsztaly.getContent());
+        System.out.println("===========================================");
         return "index";
     }
 
-    @GetMapping("/sutik")
-    public String Sutikoldal(Model model)
-    {
-        //model.addAttribute("termekek",SRepo.findAll());
-        model.addAttribute("termekek",Termekek());
-        return "sutik";
-    }
-
-    //Kapcsolt adatok a táblákból
-    String Termekek(){
-        String str="";
-        for (sutiClass suti : SRepo.findAll()){
-            str+=suti.getId()+";"+suti.getNev()+";"+suti.getTipus()+";"+suti.isDijazott();
-            str+=";"+suti.getAr().getErtek()+";"+suti.getAr().getEgyseg();
-            try {
-                str += ";" + suti.getTartalom().getMentes();
-            }catch(Exception e){
-                str+=";-nincs tartalom-";
-            }
-            str+="\n\n\n";
+        @GetMapping("/sutik")
+        public String Sutikoldal(Model model) {
+            //model.addAttribute("termekek",SRepo.findAll());
+            model.addAttribute("termekek", Termekek());
+            return "sutik";
         }
 
-        return str;
-    }
-
-    @GetMapping("/admin/uzenetek")
-    public String UzenetekOldal(Model model){
-        model.addAttribute("uzenetek",URepo.findAll());
-        return "uzenetek";
-    }
-
-    @GetMapping("/regisztral")
-    public String greetingForm(Model model)
-    {
-        model.addAttribute("reg", new felhasznaloClass());
-        return "regisztral";
-    }
-
-    @GetMapping("/login")
-    public String Login()
-    {
-        return "login";
-    }
-
-    @PostMapping("/regisztral_feldolgoz")
-    public String Regisztracio(@ModelAttribute felhasznaloClass user, Model model)
-    {
-        for (felhasznaloClass felh: FRepo.findAll())
-            if (felh.getUsername().equals(user.getUsername()))
-            {
-                model.addAttribute("uzenet", "A felhasználónév már foglalt!");
-                return "reghiba";
+        //Kapcsolt adatok a táblákból
+        String Termekek() {
+            String str = "";
+            for (sutiClass suti : SRepo.findAll()) {
+                str += suti.getId() + ";" + suti.getNev() + ";" + suti.getTipus() + ";" + suti.isDijazott();
+                str += ";" + suti.getAr().getErtek() + ";" + suti.getAr().getEgyseg();
+                try {
+                    str += ";" + suti.getTartalom().getMentes();
+                } catch (Exception e) {
+                    str += ";-nincs tartalom-";
+                }
+                str += "\n\n\n";
             }
-        BCryptPasswordEncoder pwenc = new BCryptPasswordEncoder();
-        user.setJelszo(pwenc.encode(user.getJelszo()));
-        Role role = new Role();
-        role.setId(3);
-        role.setName("USER");
-        List<Role> roleList = new ArrayList<Role>();
-        roleList.add(role);
-        user.setRoles(roleList);
-        FRepo.save(user);
-        model.addAttribute("id", user.getId());
-        return "regjo";
-    }
 
+            return str;
+        }
+
+        @GetMapping("/admin/uzenetek")
+        public String UzenetekOldal(Model model) {
+            model.addAttribute("uzenetek", URepo.findAll());
+            return "uzenetek";
+        }
+
+        @GetMapping("/regisztral")
+        public String greetingForm(Model model) {
+            model.addAttribute("reg", new felhasznaloClass());
+            return "regisztral";
+        }
+
+        @GetMapping("/login")
+        public String Login() {
+            return "login";
+        }
+
+        @PostMapping("/regisztral_feldolgoz")
+        public String Regisztracio(@ModelAttribute felhasznaloClass user, Model model) {
+            for (felhasznaloClass felh : FRepo.findAll())
+                if (felh.getUsername().equals(user.getUsername())) {
+                    model.addAttribute("uzenet", "A felhasználónév már foglalt!");
+                    return "reghiba";
+                }
+            BCryptPasswordEncoder pwenc = new BCryptPasswordEncoder();
+            user.setJelszo(pwenc.encode(user.getJelszo()));
+            Role role = new Role();
+            role.setId(3);
+            role.setName("USER");
+            List<Role> roleList = new ArrayList<Role>();
+            roleList.add(role);
+            user.setRoles(roleList);
+            FRepo.save(user);
+            model.addAttribute("id", user.getId());
+            return "regjo";
+        }
+}
+/*
     @GetMapping("/kapcsolat")
     public String Kapcsolatoldal(Model model)
     {
@@ -145,4 +168,4 @@ public class HomeController
 
         return "redirect:/";
     }
-}
+ */

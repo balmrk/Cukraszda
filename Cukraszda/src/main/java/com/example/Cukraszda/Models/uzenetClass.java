@@ -14,9 +14,9 @@ public class uzenetClass {
     @Column(name="sender")
     private String sender;
     @Column(name="content")
-    @NotEmpty(message = "Üres üzenetet nem lehet küldeni!")
-    @Size(min = 10, message = "Az üzenet túl rövid. (Min: 10 karakter)")
-    @Size(max = 255, message = "Az üzenet túl hosszú. (Max: 255 karakter)")
+    //@NotEmpty(message = "Üres üzenetet nem lehet küldeni!")
+    //@Size(min = 10, message = "Az üzenet túl rövid. (Min: 10 karakter)")
+    //@Size(max = 255, message = "Az üzenet túl hosszú. (Max: 255 karakter)")
     private String content;
     @Column(name="kuldes_ideje")
     private String kuldes_ideje;
@@ -52,5 +52,9 @@ public class uzenetClass {
 
     public void setContent(String content) {
         this.content = content;
+    }
+    //URES CONSTRUCTOR?????
+
+    public uzenetClass() {
     }
 }

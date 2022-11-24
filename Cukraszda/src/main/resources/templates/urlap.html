@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" th:href="@{/css/kapcsolat.css}" />
+  <title>Title</title>
+</head>
+<body>
+<header>
+  <div th:insert="menu"></div>
+</header>
+  <span class="lep" sec:authorize="isAnonymous()">
+  <div class="lep">Üzenjen nekünk!</div>
+  </span>
+  <span class="lep" sec:authorize="isAuthenticated()">
+  <div class="lep"><span sec:authentication="principal.username">User</span>, itt küldhetsz nekünk üzenetet!</div>
+  </span>
+<form action="#" th:action="@{/kuldes}" th:object="${msg}" placeholder="Üzenet" class="kapcs" method="post">
+  <p><input type="text" th:field="*{content}" placeholder="Üzenet" class="kapcs" /></p>
+  <p><input type="submit" value="Submit" /></p>
+</form>
+</body>
+</html>

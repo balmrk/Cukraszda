@@ -1,44 +1,20 @@
--- phpMyAdmin SQL Dump
--- version 5.1.1
--- https://www.phpmyadmin.net/
---
--- Gép: 127.0.0.1
--- Létrehozás ideje: 2022. Nov 27. 16:40
--- Kiszolgáló verziója: 10.4.21-MariaDB
--- PHP verzió: 8.0.12
+BEGIN;
+-- SQLINES LICENSE FOR EVALUATION USE ONLY
+CREATE SEQUENCE ar_seq;
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+CREATE TABLE ar (
+  id int NOT NULL primary key DEFAULT NEXTVAL ('ar_seq'),
+  sutiid int NOT NULL,
+  ertek int NOT NULL,
+  egyseg varchar(25) NOT NULL
+) ;
 
 --
--- Adatbázis: `cukraszda`
+-- SQLINES DEMO *** k kiíratása `ar`
 --
 
--- --------------------------------------------------------
-
---
--- Tábla szerkezet ehhez a táblához `ar`
---
-
-CREATE TABLE `ar` (
-  `id` int(3) NOT NULL,
-  `sutiid` int(3) NOT NULL,
-  `ertek` int(5) NOT NULL,
-  `egyseg` varchar(25) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- A tábla adatainak kiíratása `ar`
---
-
-INSERT INTO `ar` (`id`, `sutiid`, `ertek`, `egyseg`) VALUES
+-- SQLINES LICENSE FOR EVALUATION USE ONLY
+INSERT INTO ar (id, sutiid, ertek, egyseg) VALUES
 (1, 32, 500, 'db'),
 (2, 76, 10900, '16 szeletes'),
 (3, 106, 4300, '8 szeletes'),
@@ -248,84 +224,98 @@ INSERT INTO `ar` (`id`, `sutiid`, `ertek`, `egyseg`) VALUES
 (207, 53, 4200, 'kg'),
 (208, 89, 4700, '8 szeletes');
 
--- --------------------------------------------------------
+-- SQLINES DEMO *** ---------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `felhasznalo`
+-- SQLINES DEMO *** ehhez a táblához `felhasznalo`
 --
 
-CREATE TABLE `felhasznalo` (
-  `id` int(11) NOT NULL,
-  `felhasznalonev` varchar(25) NOT NULL,
-  `jelszo` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+-- SQLINES LICENSE FOR EVALUATION USE ONLY
+CREATE SEQUENCE felhasznalo_seq;
+
+CREATE TABLE felhasznalo (
+  id int NOT NULL primary key DEFAULT NEXTVAL ('felhasznalo_seq'),
+  felhasznalonev varchar(25) NOT NULL,
+  jelszo varchar(100) NOT NULL
+) ;
 
 --
--- A tábla adatainak kiíratása `felhasznalo`
+-- SQLINES DEMO *** k kiíratása `felhasznalo`
 --
 
-INSERT INTO `felhasznalo` (`id`, `felhasznalonev`, `jelszo`) VALUES
+-- SQLINES LICENSE FOR EVALUATION USE ONLY
+INSERT INTO felhasznalo (id, felhasznalonev, jelszo) VALUES
 (1, 'admin', '$2a$10$VMNCX7vyZjvW/6.CNsDnQuM.rAZ2JstRFoRVyEDI6Ekg1kOAhsw3y'),
 (2, 'pyx', '$2a$10$PE83QqmkcWMY4qejmgeB7.EQHPvMuNaYnBRAv34Op9DvEBABMCleu'),
 (9, 'pix', '$2a$10$Bqii1AhnA3BeFDAaynv53u4qnHJg583qlaQuGlxl1Pw99wSpOZOCu'),
 (10, 'pix a', '$2a$10$lEKwDiK5vbMsgpLkao81Ae8psfKseWYKTc0GmGtn2R2c1OgUKdF0y');
 
--- --------------------------------------------------------
+-- SQLINES DEMO *** ---------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `hibernate_sequence`
+-- SQLINES DEMO *** ehhez a táblához `hibernate_sequence`
 --
 
-CREATE TABLE `hibernate_sequence` (
-  `next_val` bigint(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
+-- SQLINES LICENSE FOR EVALUATION USE ONLY
+CREATE TABLE hibernate_sequence (
+  next_val bigint DEFAULT NULL
+) ;
 
 --
--- A tábla adatainak kiíratása `hibernate_sequence`
+-- SQLINES DEMO *** k kiíratása `hibernate_sequence`
 --
 
-INSERT INTO `hibernate_sequence` (`next_val`) VALUES
+-- SQLINES LICENSE FOR EVALUATION USE ONLY
+INSERT INTO hibernate_sequence (next_val) VALUES
 (1);
 
--- --------------------------------------------------------
+-- SQLINES DEMO *** ---------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `roles`
+-- SQLINES DEMO *** ehhez a táblához `roles`
 --
 
-CREATE TABLE `roles` (
-  `id` int(3) NOT NULL,
-  `name` varchar(8) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+-- SQLINES LICENSE FOR EVALUATION USE ONLY
+CREATE SEQUENCE roles_seq;
+
+CREATE TABLE roles (
+  id int NOT NULL primary key DEFAULT NEXTVAL ('roles_seq'),
+  name varchar(8) NOT NULL
+) ;
 
 --
--- A tábla adatainak kiíratása `roles`
+-- SQLINES DEMO *** k kiíratása `roles`
 --
 
-INSERT INTO `roles` (`id`, `name`) VALUES
+-- SQLINES LICENSE FOR EVALUATION USE ONLY
+INSERT INTO roles (id, name) VALUES
 (1, 'ADMIN'),
 (2, 'USER'),
 (3, 'LATOGATO');
 
--- --------------------------------------------------------
+-- SQLINES DEMO *** ---------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `suti`
+-- SQLINES DEMO *** ehhez a táblához `suti`
 --
 
-CREATE TABLE `suti` (
-  `id` int(3) NOT NULL,
-  `nev` varchar(50) NOT NULL,
-  `tipus` varchar(20) NOT NULL,
-  `dijazott` tinyint(1) NOT NULL,
-  `sutiid` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+-- SQLINES LICENSE FOR EVALUATION USE ONLY
+CREATE SEQUENCE suti_seq;
+
+CREATE TABLE suti (
+  id int NOT NULL primary key DEFAULT NEXTVAL ('suti_seq'),
+  nev varchar(50) NOT NULL,
+  tipus varchar(20) NOT NULL,
+  dijazott smallint NOT NULL,
+  sutiid int DEFAULT NULL
+) ;
 
 --
--- A tábla adatainak kiíratása `suti`
+-- SQLINES DEMO *** k kiíratása `suti`
 --
 
-INSERT INTO `suti` (`id`, `nev`, `tipus`, `dijazott`, `sutiid`) VALUES
+-- SQLINES LICENSE FOR EVALUATION USE ONLY
+INSERT INTO suti (id, nev, tipus, dijazott, sutiid) VALUES
 (1, 'Süni', 'vegyes', 0, NULL),
 (2, 'Gesztenyealagút', 'vegyes', 0, NULL),
 (3, 'Sajtos pogácsa', 'sós teasütemény', 0, NULL),
@@ -466,23 +456,27 @@ INSERT INTO `suti` (`id`, `nev`, `tipus`, `dijazott`, `sutiid`) VALUES
 (138, 'Tejfölös túrós hajtogatott', 'sós teasütemény', 0, NULL),
 (139, 'Mákos guba', 'torta', 0, NULL);
 
--- --------------------------------------------------------
+-- SQLINES DEMO *** ---------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `tartalom`
+-- SQLINES DEMO *** ehhez a táblához `tartalom`
 --
 
-CREATE TABLE `tartalom` (
-  `id` int(3) NOT NULL,
-  `sutiid` int(3) NOT NULL,
-  `mentes` varchar(2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+-- SQLINES LICENSE FOR EVALUATION USE ONLY
+CREATE SEQUENCE tartalom_seq;
+
+CREATE TABLE tartalom (
+  id int NOT null primary key DEFAULT NEXTVAL ('tartalom_seq'),
+  sutiid int NOT NULL,
+  mentes varchar(2) NOT NULL
+) ;
 
 --
--- A tábla adatainak kiíratása `tartalom`
+-- SQLINES DEMO *** k kiíratása `tartalom`
 --
 
-INSERT INTO `tartalom` (`id`, `sutiid`, `mentes`) VALUES
+-- SQLINES LICENSE FOR EVALUATION USE ONLY
+INSERT INTO tartalom (id, sutiid, mentes) VALUES
 (1, 26, 'G'),
 (2, 37, 'L'),
 (3, 83, 'HC'),
@@ -529,22 +523,26 @@ INSERT INTO `tartalom` (`id`, `sutiid`, `mentes`) VALUES
 (44, 129, 'L'),
 (45, 15, 'É');
 
--- --------------------------------------------------------
+-- SQLINES DEMO *** ---------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `user_role`
+-- SQLINES DEMO *** ehhez a táblához `user_role`
 --
 
-CREATE TABLE `user_role` (
-  `user_id` int(3) NOT NULL,
-  `role_id` int(3) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+-- SQLINES LICENSE FOR EVALUATION USE ONLY
+CREATE SEQUENCE user_role_seq;
+
+CREATE TABLE user_role (
+  user_id int NOT NULL,
+  role_id int NOT NULL
+) ;
 
 --
--- A tábla adatainak kiíratása `user_role`
+-- SQLINES DEMO *** k kiíratása `user_role`
 --
 
-INSERT INTO `user_role` (`user_id`, `role_id`) VALUES
+-- SQLINES LICENSE FOR EVALUATION USE ONLY
+INSERT INTO user_role (user_id, role_id) VALUES
 (1, 1),
 (1, 2),
 (1, 3),
@@ -554,123 +552,29 @@ INSERT INTO `user_role` (`user_id`, `role_id`) VALUES
 (9, 3),
 (10, 3);
 
--- --------------------------------------------------------
+-- SQLINES DEMO *** ---------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `uzenetek`
+-- SQLINES DEMO *** ehhez a táblához `uzenetek`
 --
 
-CREATE TABLE `uzenetek` (
-  `id` int(10) NOT NULL,
-  `sender` varchar(40) COLLATE utf8mb4_hungarian_ci NOT NULL,
-  `content` varchar(255) COLLATE utf8mb4_hungarian_ci NOT NULL,
-  `kuldes_ideje` varchar(19) COLLATE utf8mb4_hungarian_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
+-- SQLINES LICENSE FOR EVALUATION USE ONLY
+CREATE SEQUENCE uzenetek_seq;
+
+CREATE TABLE uzenetek (
+  id int NOT NULL primary key DEFAULT NEXTVAL ('uzenetek_seq'),
+  sender varchar(40) NOT NULL,
+  content varchar(255) NOT NULL,
+  kuldes_ideje varchar(19) NOT NULL
+) ;
 
 --
--- A tábla adatainak kiíratása `uzenetek`
+-- SQLINES DEMO *** k kiíratása `uzenetek`
 --
 
-INSERT INTO `uzenetek` (`id`, `sender`, `content`, `kuldes_ideje`) VALUES
+-- SQLINES LICENSE FOR EVALUATION USE ONLY
+INSERT INTO uzenetek (id, sender, content, kuldes_ideje) VALUES
 (31, 'Vendég', 't', '2022-11-27 02:04:24'),
 (32, 'pyx', 'sui', '2022-11-27 02:04:35');
 
---
--- Indexek a kiírt táblákhoz
---
-
---
--- A tábla indexei `ar`
---
-ALTER TABLE `ar`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `sutiid` (`sutiid`);
-
---
--- A tábla indexei `felhasznalo`
---
-ALTER TABLE `felhasznalo`
-  ADD PRIMARY KEY (`id`);
-
---
--- A tábla indexei `roles`
---
-ALTER TABLE `roles`
-  ADD PRIMARY KEY (`id`);
-
---
--- A tábla indexei `suti`
---
-ALTER TABLE `suti`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `FK41s73emghxw9fcxwx3bybh8q5` (`sutiid`);
-
---
--- A tábla indexei `tartalom`
---
-ALTER TABLE `tartalom`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `sutiid` (`sutiid`);
-
---
--- A tábla indexei `user_role`
---
-ALTER TABLE `user_role`
-  ADD KEY `user_id` (`user_id`),
-  ADD KEY `role_id` (`role_id`);
-
---
--- A tábla indexei `uzenetek`
---
-ALTER TABLE `uzenetek`
-  ADD PRIMARY KEY (`id`);
-
---
--- A kiírt táblák AUTO_INCREMENT értéke
---
-
---
--- AUTO_INCREMENT a táblához `felhasznalo`
---
-ALTER TABLE `felhasznalo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- AUTO_INCREMENT a táblához `uzenetek`
---
-ALTER TABLE `uzenetek`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
-
---
--- Megkötések a kiírt táblákhoz
---
-
---
--- Megkötések a táblához `ar`
---
-ALTER TABLE `ar`
-  ADD CONSTRAINT `ar_ibfk_1` FOREIGN KEY (`sutiid`) REFERENCES `suti` (`id`);
-
---
--- Megkötések a táblához `suti`
---
-ALTER TABLE `suti`
-  ADD CONSTRAINT `FK41s73emghxw9fcxwx3bybh8q5` FOREIGN KEY (`sutiid`) REFERENCES `ar` (`id`);
-
---
--- Megkötések a táblához `tartalom`
---
-ALTER TABLE `tartalom`
-  ADD CONSTRAINT `tartalom_ibfk_1` FOREIGN KEY (`sutiid`) REFERENCES `suti` (`id`);
-
---
--- Megkötések a táblához `user_role`
---
-ALTER TABLE `user_role`
-  ADD CONSTRAINT `user_role_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `felhasznalo` (`id`),
-  ADD CONSTRAINT `user_role_ibfk_2` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`);
 COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

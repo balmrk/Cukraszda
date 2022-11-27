@@ -15,27 +15,29 @@ public class sutiClass {
     @Column(name="dijazott")
     private boolean dijazott;
 
-    @OneToOne
-    @JoinColumn(name = "id", referencedColumnName = "sutiid", insertable = false, updatable = false)
-    private arClass ar;
+    //@OneToOne
+    //@JoinColumn(name = "id", referencedColumnName = "sutiid", insertable = false, updatable = false)
+    @OneToMany(mappedBy = "sutiid")
+    private List<arClass> ar;
 
-    @OneToOne
-    @JoinColumn(name = "id", referencedColumnName = "sutiid", insertable = false, updatable = false)
-    private tartalomClass tartalom;
+    //@OneToOne
+    //@JoinColumn(name = "id", referencedColumnName = "sutiid", insertable = false, updatable = false)
+    @OneToMany(mappedBy = "sutiid")
+    private List<tartalomClass> tartalom;
 
-    public tartalomClass getTartalom() {
+    public List<tartalomClass> getTartalom() {
         return tartalom;
     }
 
-    public void setTartalom(tartalomClass tartalom) {
+    public void setTartalom(List<tartalomClass> tartalom) {
         this.tartalom = tartalom;
     }
 
-    public arClass getAr() {
+    public List<arClass> getAr() {
         return ar;
     }
 
-    public void setAr(arClass ar) {
+    public void setAr(List<arClass> ar) {
         this.ar = ar;
     }
 

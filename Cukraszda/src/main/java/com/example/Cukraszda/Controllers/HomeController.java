@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.validation.Valid;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -88,15 +89,18 @@ public class HomeController {
         //Kapcsolt adatok DTO (Adatátviteli objektuma)
         List<termekekClass> Termekek() {
             List<termekekClass> termekek = new ArrayList<>();
-            String str = "";
             for (sutiClass suti : SRepo.findAll()) {
-                try {
-                    str = suti.getTartalom().getMentes();
-                } catch (Exception e) {
-                    str = "-nincs tartalom-";
+                List<tartalomClass> tartalmak = suti.getTartalom();
+                String trt = "";
+                for (tartalomClass a:tartalmak){
+                    trt+=a.getMentes()+ " ";
                 }
-                termekekClass termek = new termekekClass(suti.getId(),suti.getNev(),suti.getTipus(),suti.isDijazott(),suti.getAr().getErtek(),suti.getAr().getEgyseg(),str);
-                termekek.add(termek);
+
+                List<arClass> ar = suti.getAr();
+                for (arClass i : ar){
+                    termekekClass termek = new termekekClass(suti.getId(),suti.getNev(),suti.getTipus(),suti.isDijazott(),i.getErtek(),i.getEgyseg(),trt);
+                    termekek.add(termek);
+                }
             }
 
             return termekek;

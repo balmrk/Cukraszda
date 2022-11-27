@@ -45,34 +45,37 @@ public class HomeController {
     public String Fooldal() {
         return "index";
     }
-/*
-        @GetMapping("/kapcsolat")
-        public String kapcsolatOldal(Model model) {
-            model.addAttribute("asd", new uzenetClass());
-            return "teszt";
-        }
 
-        @PostMapping("/uzenet")
-        public String urlapKuldes(@ModelAttribute uzenetClass uzenet, Model model) {
-            model.addAttribute("attr2", uzenet);
-            System.out.println("===========================================");
-            //System.out.println("Az elküldött üzenet: " + uzenet.getContent());
-            System.out.println("===========================================");
+    @GetMapping("/kapcsolat")
+    public String Kapcsolatoldal(Model model)
+    {
+        model.addAttribute("mess", new uzenetClass());
+        return "kapcsolat";
+    }
+
+    @PostMapping("/uzenet_feldolgoz")
+    public String Uzenetkuldes(@Valid @ModelAttribute uzenetClass mess, BindingResult bindingResult, Model model)
+    {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("mess", new uzenetClass());
             return "kapcsolat";
         }
-*/
-@GetMapping("/uzenet")
-public String urlapForm(Model model) {
-    model.addAttribute("msg", new uzenetClass());
-    return "urlap";
-}
-    @PostMapping("/kuldes")
-    public String urlapSubmit(@ModelAttribute uzenetClass UzenetOsztaly, Model model) {
-        model.addAttribute("attr2", UzenetOsztaly);
-        System.out.println("===========================================");
-        System.out.println(UzenetOsztaly.getContent());
-        System.out.println("===========================================");
-        return "index";
+        //üzenet feladója
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String neve = auth.getName();
+        if (neve.equals("anonymousUser")) neve="Vendég";
+        mess.setSender(neve);
+
+        //küldés ideje
+        LocalDateTime ido = LocalDateTime.now();
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String formattedIdo = ido.format(format);
+        mess.setKuldes_ideje(formattedIdo);
+
+        //mentés adatbázisba
+        URepo.save(mess);
+
+        return "redirect:/";
     }
 
         @GetMapping("/sutik")
@@ -82,21 +85,21 @@ public String urlapForm(Model model) {
             return "sutik";
         }
 
-        //Kapcsolt adatok a táblákból
-        String Termekek() {
+        //Kapcsolt adatok DTO (Adatátviteli objektuma)
+        List<termekekClass> Termekek() {
+            List<termekekClass> termekek = new ArrayList<>();
             String str = "";
             for (sutiClass suti : SRepo.findAll()) {
-                str += suti.getId() + ";" + suti.getNev() + ";" + suti.getTipus() + ";" + suti.isDijazott();
-                str += ";" + suti.getAr().getErtek() + ";" + suti.getAr().getEgyseg();
                 try {
-                    str += ";" + suti.getTartalom().getMentes();
+                    str = suti.getTartalom().getMentes();
                 } catch (Exception e) {
-                    str += ";-nincs tartalom-";
+                    str = "-nincs tartalom-";
                 }
-                str += "\n\n\n";
+                termekekClass termek = new termekekClass(suti.getId(),suti.getNev(),suti.getTipus(),suti.isDijazott(),suti.getAr().getErtek(),suti.getAr().getEgyseg(),str);
+                termekek.add(termek);
             }
 
-            return str;
+            return termekek;
         }
 
         @GetMapping("/admin/uzenetek")
@@ -136,36 +139,3 @@ public String urlapForm(Model model) {
             return "regjo";
         }
 }
-/*
-    @GetMapping("/kapcsolat")
-    public String Kapcsolatoldal(Model model)
-    {
-        model.addAttribute("mess", new uzenetClass());
-        return "kapcsolat";
-    }
-
-    @PostMapping("/uzenet_feldolgoz")
-    public String Uzenetkuldes(@Valid @ModelAttribute uzenetClass mess, BindingResult bindingResult, Model model)
-    {
-        if (bindingResult.hasErrors()) {
-            model.addAttribute("mess", new uzenetClass());
-            return "kapcsolat";
-        }
-        //üzenet feladója
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String neve = auth.getName();
-        if (neve.equals("anonymousUser")) neve="Vendég";
-        mess.setSender(neve);
-
-        //küldés ideje
-        LocalDateTime ido = LocalDateTime.now();
-        DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        String formattedIdo = ido.format(format);
-        mess.setKuldes_ideje(formattedIdo);
-
-        //mentés adatbázisba
-        URepo.save(mess);
-
-        return "redirect:/";
-    }
- */

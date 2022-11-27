@@ -8,15 +8,19 @@
 <body>
 <div th:insert="menu"></div>
 <h3 id="sutcim">Sütik</h3>
+<!--
 <p th:utext="${termekek}"></p>
-
-<!-- <table class="lista">
+-->
+<table class="lista">
     <thead>
     <tr>
         <th id="id">ID</th>
         <th id="nevt">Név</th>
         <th id="tip">Típus</th>
         <th>Díjazott</th>
+        <th>Ár</th>
+        <th>Egység</th>
+        <th>Mentes</th>
     </tr>
     </thead>
     <tbody>
@@ -24,11 +28,14 @@
         <td th:text="${suti.id}"></td>
         <td th:text="${suti.nev}"></td>
         <td th:text="${suti.tipus}"></td>
-        <td th:text="${suti.dijazott}"></td>
+        <td th:text="${suti.isDijazott}"></td>
+        <td th:text="${suti.ar}"></td>
+        <td th:text="${suti.egyseg}"></td>
+        <td th:text="${suti.mentes}"></td>
     </tr>
     </tbody>
 </table>
--->
+
 <div th:insert="footer"></div>
 </body>
 </html>

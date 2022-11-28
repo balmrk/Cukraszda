@@ -1,6 +1,7 @@
 # Cukraszda
-Java alkalmazások: Beadandó feladat (labor)
-Készítette: Balázs Márk (BM) és Engler Dániel (ED)
+Java alkalmazások: Beadandó feladat (labor).
+
+Készítette: Balázs Márk és Engler Dániel
 
 A kész projeckt megtekinthető legkésőbb 2023.januárig: https://cukraszda.azurewebsites.net/
 -------------------------------------------------------------------------------------------
@@ -15,3 +16,8 @@ A kész projeckt megtekinthető legkésőbb 2023.januárig: https://cukraszda.az
 - GitHub használat
 - Megvalósítás Interneten a Microsoft Azure felhőben
 - RESTful API
+  - GET ALL: https://cukraszda.azurewebsites.net/sutik/all
+  - GET BY ID: https://cukraszda.azurewebsites.net/sutik/5
+  - POST
+  - PUT
+  - DELETE

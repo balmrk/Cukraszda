@@ -3,7 +3,7 @@ Java alkalmazások: Beadandó feladat (labor).
 
 Készítette: Balázs Márk és Engler Dániel
 
-A kész projeckt megtekinthető legkésőbb 2023.januárig: https://cukraszda.azurewebsites.net/
+A kész project megtekinthető legkésőbb 2023.januárig: https://cukraszda.azurewebsites.net/
 -------------------------------------------------------------------------------------------
 
 **Az elvégzett feladatok:**
